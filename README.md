@@ -50,11 +50,10 @@ For questions, reach out in the [Issues](../../issues) or on our community teleg
 
 **Aztec Protocol Resources**
 
--   [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
 -   [Aztec Docs](https://docs.aztec.network/)
 -   [Noir Docs](https://noir-lang.org/docs/)
--   [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel/blob/main/README.md)
--   [Projects and Tooling](https://github.com/AztecProtocol/dev-rel/blob/main/hackathons/TOOLS.md)
+-   [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
+-   [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel)
 
 **Courses & Examples**
 
@@ -66,3 +65,8 @@ For questions, reach out in the [Issues](../../issues) or on our community teleg
 -   [Aztec Network: Zero to One!](https://blog.onlydust.com/aztec-network-zero-to-one/)
 -   [Aztec's Transaction](https://aztec.network/blog/aztecs-transaction-anatomy)
 -   [Aztec's Transaction Lifecycle Flow Chart](https://blog.onlydust.com/content/images/size/w1600/2024/04/sandbox_sending_a_tx.png)
+
+**NFT Resources**
+
+-   [NFT Contract Example](https://docs.aztec.network/tutorials/codealong/contract_tutorials/nft_contract)
+-   [Outdated - Experimental Private and Non Private NFT Standards](https://github.com/resurgencelabs/nft_standards)
