@@ -5,7 +5,7 @@
 <h1 align="center">Tezac NFT Marketplace</h1>
 
 <p align="center">
-  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games—all with ZK proofs. </strong>
+  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games, all with ZK proofs. </strong>
 </p>
 
 <!-- markdownlint-restore -->
@@ -34,14 +34,35 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 
 ## TODO:
 
-1. **Creating Private Listings**  
-2. **Bidding in Blind/Sealed-Bid Auctions**
-3. **Finalizing Trades and Auctions**  
-4. **Cross-Chain Redemption**  
-5. **Gaming / Lottery Mechanics**  
+1. Creating Private Listings
+2. Bidding in Blind/Sealed-Bid Auctions
+3. Finalizing Trades and Auctions
+4. Cross-Chain Redemption
+5. Gaming / Lottery Mechanics
 
 ## Contributing
 
 We welcome pull requests, feature requests, and bug reports.
 
-For questions, reach out in the [Issues](../../issues) or on our community telegram group: https://t.me/+WI9728WPBOE0N2M1  
+For questions, reach out in the [Issues](../../issues) or on our community telegram group: https://t.me/+WI9728WPBOE0N2M1
+
+## Resources
+
+**Aztec Protocol Resources**
+
+-   [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
+-   [Aztec Docs](https://docs.aztec.network/)
+-   [Noir Docs](https://noir-lang.org/docs/)
+-   [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel/blob/main/README.md)
+-   [Projects and Tooling](https://github.com/AztecProtocol/dev-rel/blob/main/hackathons/TOOLS.md)
+
+**Courses & Examples**
+
+-   [ZKCamp's Aztec Noir Course](https://github.com/ZKCamp/aztec-noir-course)
+-   [Noir Examples](https://github.com/noir-lang/noir-examples)
+
+**Articles & Blogs**
+
+-   [Aztec Network: Zero to One!](https://blog.onlydust.com/aztec-network-zero-to-one/)
+-   [Aztec's Transaction](https://aztec.network/blog/aztecs-transaction-anatomy)
+-   [Aztec's Transaction Lifecycle Flow Chart](https://blog.onlydust.com/content/images/size/w1600/2024/04/sandbox_sending_a_tx.png)
