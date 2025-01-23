@@ -5,11 +5,10 @@
 <h1 align="center">Tezac NFT Marketplace</h1>
 
 <p align="center">
-  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games, all with ZK proofs. </strong>
+  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games, all with ZK proofs.</strong>
 </p>
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+---
 
 ## Overview
 
@@ -32,41 +31,68 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 5. **Front-Running Resistance**  
    Time-locked or encrypted order submissions prevent miners or bots from exploiting transaction details in the mempool.
 
-## TODO:
+## Roadmap
 
-1. Creating Private Listings
+0. Private NFT Contracts (WIP)
+1. Creating Private Listings & Purchasing (WIP)
 2. Bidding in Blind/Sealed-Bid Auctions
 3. Finalizing Trades and Auctions
 4. Cross-Chain Redemption
 5. Gaming / Lottery Mechanics
 
+## Getting Started
+
+### Prerequisites
+
+- **Node > v18**
+- **Docker**
+
+### Usage
+
+1. **Install Dependencies**
+   ```bash
+   yarn
+   ```
+2. **Prepare Artifacts**
+   ```bash
+   yarn prep
+   ```
+3. **Start the Development Server**
+   ```bash
+   yarn dev
+   ```
+
 ## Contributing
 
-We welcome pull requests, feature requests, and bug reports.
+We welcome pull requests, feature requests, and bug reports. When contributing, please ensure:
 
-For questions, reach out in the [Issues](../../issues) or on our community telegram group: https://t.me/+WI9728WPBOE0N2M1
+1. Your code is properly formatted (`yarn formatting:fix`).
+2. All tests pass (`yarn test`).
+3. You adhere to the project structure and code style guidelines.
+
+For questions, reach out in the [Issues](../../issues) or on our community Telegram group: [https://t.me/+WI9728WPBOE0N2M1](https://t.me/+WI9728WPBOE0N2M1)
 
 ## Resources
 
-**Aztec Protocol Resources**
+### Aztec Protocol Resources
 
--   [Aztec Docs](https://docs.aztec.network/)
--   [Noir Docs](https://noir-lang.org/docs/)
--   [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
--   [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel)
+- [Aztec Docs](https://docs.aztec.network/)
+- [Noir Docs](https://noir-lang.org/docs/)
+- [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
+- [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel)
 
-**Courses & Examples**
+### Courses & Examples
 
--   [ZKCamp's Aztec Noir Course](https://github.com/ZKCamp/aztec-noir-course)
--   [Noir Examples](https://github.com/noir-lang/noir-examples)
+- [ZKCamp's Aztec Noir Course](https://github.com/ZKCamp/aztec-noir-course)
+- [Noir Examples](https://github.com/noir-lang/noir-examples)
 
-**Articles & Blogs**
+### Articles & Blogs
 
--   [Aztec Network: Zero to One!](https://blog.onlydust.com/aztec-network-zero-to-one/)
--   [Aztec's Transaction](https://aztec.network/blog/aztecs-transaction-anatomy)
--   [Aztec's Transaction Lifecycle Flow Chart](https://blog.onlydust.com/content/images/size/w1600/2024/04/sandbox_sending_a_tx.png)
+- [Aztec Network: Zero to One!](https://blog.onlydust.com/aztec-network-zero-to-one/)
+- [Aztec's Transaction](https://aztec.network/blog/aztecs-transaction-anatomy)
+- [Aztec's Transaction Lifecycle Flow Chart](https://blog.onlydust.com/content/images/size/w1600/2024/04/sandbox_sending_a_tx.png)
 
-**NFT Resources**
+### NFT Resources
 
--   [NFT Contract Example](https://docs.aztec.network/tutorials/codealong/contract_tutorials/nft_contract)
--   [Outdated - Experimental Private and Non Private NFT Standards](https://github.com/resurgencelabs/nft_standards)
+- [NFT Contract Example](https://docs.aztec.network/tutorials/codealong/contract_tutorials/nft_contract)
+- [Outdated - Experimental Private and Non Private NFT Standards](https://github.com/resurgencelabs/nft_standards)
