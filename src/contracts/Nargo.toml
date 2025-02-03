@@ -1,5 +1,5 @@
 [package]
-name = "boxreact"
+name = "tezac"
 authors = [ "" ]
 compiler_version = ">=0.18.0"
 type = "contract"
