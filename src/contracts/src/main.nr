@@ -1,9 +1,11 @@
+mod types;
+
 use dep::aztec::macros::aztec;
 
 #[aztec]
-contract BoxReact {
+contract NFT {
     use crate::types::nft_note::NFTNote;
-     use dep::authwit::auth::{
+    use dep::authwit::auth::{
         assert_current_call_valid_authwit, assert_current_call_valid_authwit_public,
         compute_authwit_nullifier,
     };
@@ -28,7 +30,7 @@ contract BoxReact {
 
     #[derive(Serialize)]
     #[event]
-    struct NFTTransfer {
+    pub struct NFTTransfer {
         from: AztecAddress,
         to: AztecAddress,
         token_id: Field,
@@ -39,7 +41,6 @@ contract BoxReact {
         symbol: PublicImmutable<FieldCompressedString, Context>,
         name: PublicImmutable<FieldCompressedString, Context>,
         admin: PublicMutable<AztecAddress, Context>,
-        minters: Map<AztecAddress, PublicMutable<bool, Context>, Context>,
         private_nfts: Map<AztecAddress, PrivateSet<NFTNote, Context>, Context>,
         nft_exists: Map<Field, PublicMutable<bool, Context>, Context>,
         public_owners: Map<Field, PublicMutable<AztecAddress, Context>, Context>,
@@ -50,7 +51,6 @@ contract BoxReact {
     fn constructor(admin: AztecAddress, name: str<31>, symbol: str<31>) {
         assert(!admin.is_zero(), "invalid admin");
         storage.admin.write(admin);
-        storage.minters.at(admin).write(true);
         storage.name.initialize(FieldCompressedString::from_string(name));
         storage.symbol.initialize(FieldCompressedString::from_string(symbol));
     }
@@ -62,15 +62,8 @@ contract BoxReact {
     }
 
     #[public]
-    fn set_minter(minter: AztecAddress, approve: bool) {
-        assert(storage.admin.read().eq(context.msg_sender()), "caller is not an admin");
-        storage.minters.at(minter).write(approve);
-    }
-
-    #[public]
     fn mint(to: AztecAddress, token_id: Field) {
         assert(token_id != 0, "zero token ID not supported");
-        assert(storage.minters.at(context.msg_sender()).read(), "caller is not a minter");
         assert(storage.nft_exists.at(token_id).read() == false, "token already exists");
 
         storage.nft_exists.at(token_id).write(true);
@@ -78,6 +71,20 @@ contract BoxReact {
         storage.public_owners.at(token_id).write(to);
     }
 
+    #[private]
+    fn private_mint(to: AztecAddress, token_id: Field) {
+        assert(token_id != 0, "zero token ID not supported");
+
+        let nfts = storage.private_nfts;
+        let notes = nfts.at(to).pop_notes(NoteGetterOptions::new()
+            .select(NFTNote::properties().token_id, Comparator.EQ, token_id)
+            .set_limit(1));
+        assert(notes.len() == 0, "token already exists");
+
+        nfts.at(to).insert(&mut NFTNote::new(token_id, to)).emit(
+            encode_and_encrypt_note(&mut context, to, to)
+        );
+    }
 
     #[public]
     #[view]
@@ -107,12 +114,6 @@ contract BoxReact {
     #[view]
     fn get_admin() -> Field {
         storage.admin.read().to_field()
-    }
-
-    #[public]
-    #[view]
-    fn is_minter(minter: AztecAddress) -> bool {
-        storage.minters.at(minter).read()
     }
 
     #[public]
@@ -152,7 +153,10 @@ contract BoxReact {
     fn prepare_private_balance_increase(to: AztecAddress) -> Field {
         _prepare_private_balance_increase(to, &mut context, storage)
     }
-
+    
+    /// This function exists separately from `prepare_private_balance_increase` solely as an optimization as it allows
+    /// us to have it inlined in the `transfer_to_private` function which results in one less kernel iteration.
+    ///
     #[contract_library_method]
     fn _prepare_private_balance_increase(
         to: AztecAddress,
@@ -262,7 +266,6 @@ contract BoxReact {
     // Cancel a private authentication witness.
     // @param inner_hash The inner hash of the authwit to cancel.
     //
-    // docs:start:cancel_authwit
     #[private]
     fn cancel_authwit(inner_hash: Field) {
         let on_behalf_of = context.msg_sender();

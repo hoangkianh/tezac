@@ -11,7 +11,7 @@ use dep::aztec::{
 };
 
 // docs:start:nft_note
-#[partial_note(quote { token_id})]
+#[partial_note(quote {token_id})]
 pub struct NFTNote {
     // ID of the token
     token_id: Field,
