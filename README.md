@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/bHLm1PR/tezac-logo.webp" height="256">
+  <img src="https://github.com/user-attachments/assets/f1d907bb-ebf0-4683-948c-e781f22ea5c7" height="256">
 </p>
 
 <h1 align="center">Tezac NFT Marketplace</h1>
