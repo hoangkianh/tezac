@@ -22,8 +22,8 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 2. **Hidden Reserve Prices and Blind Auctions**  
    Sellers can set hidden reserve prices, while buyers participate in sealed-bid auctions without revealing their bids on-chain until settlement.
 
-3. **Cross-Chain NFT Bridging**  
-   Existing NFTs from Ethereum or other chains can be locked and minted on Aztec for private trading, with trustless redemption back to the original chain.
+3. **Cross-Chain NFT Trading**  
+   Integrates with existing L1 NFT collections through a bridge system, enabling private trading of established NFTs.
 
 4. **Provably Fair NFT Games**  
    Verifiable randomness ensures fair raffles, lotteries, or mystery box reveals without exposing participant identities or sensitive state.
@@ -33,12 +33,12 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 
 ## Roadmap
 
-0. Private NFT Contracts (WIP)
+0. Create Private NFT Contracts (WIP)
 1. Creating Private Listings & Purchasing (WIP)
-2. Bidding in Blind/Sealed-Bid Auctions
+2. Hidden Reserve Prices and Blind Auctions
 3. Finalizing Trades and Auctions
-4. Cross-Chain Redemption
-5. Gaming / Lottery Mechanics
+4. Launch Private NFT Collection
+5. Cross-Chain Trading
 
 ## Getting Started
 
