@@ -80,6 +80,7 @@ For questions, reach out in the [Issues](../../issues) or on our community Teleg
 - [Noir Docs](https://noir-lang.org/docs/)
 - [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
 - [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel)
+- [Aztec Standards by DeFi Wonderland](https://github.com/defi-wonderland/aztec-standards)
 
 ### Courses & Examples
 
