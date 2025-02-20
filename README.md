@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/f1d907bb-ebf0-4683-948c-e781f22ea5c7" height="256">
 </p>
 
-<h1 align="center">Tezac NFT Marketplace</h1>
+<h1 align="center">Tezac NFT Trading Protocol</h1>
 
 <p align="center">
   <strong>A privacy-preserving NFT trading protocol built on the Aztec Network. With encrypted ownership, private cross-chain trade established L1/L2 collections.
