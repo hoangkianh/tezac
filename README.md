@@ -35,10 +35,7 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 
 0. Create Private NFT Contracts (WIP)
 1. Creating Private Listings & Purchasing (WIP)
-2. Hidden Reserve Prices and Blind Auctions
-3. Finalizing Trades and Auctions
-4. Launch Private NFT Collection
-5. Cross-Chain Trading
+3. Cross-Chain Trading
 
 ## Getting Started
 
