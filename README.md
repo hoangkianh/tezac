@@ -5,7 +5,9 @@
 <h1 align="center">Tezac NFT Marketplace</h1>
 
 <p align="center">
-  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games, all with ZK proofs.</strong>
+  <strong>A privacy-preserving NFT trading protocol built on the Aztec Network. With encrypted ownership, private cross-chain trade established L1/L2 collections.
+
+ all with ZK proofs.</strong>
 </p>
 
 ---
