@@ -1,11 +1,13 @@
 <p align="center">
-  <img src="https://i.ibb.co/bHLm1PR/tezac-logo.webp" height="256">
+  <img src="https://github.com/user-attachments/assets/f1d907bb-ebf0-4683-948c-e781f22ea5c7" height="256">
 </p>
 
-<h1 align="center">Tezac NFT Marketplace</h1>
+<h1 align="center">Tezac NFT Trading Protocol</h1>
 
 <p align="center">
-  <strong>A privacy-preserving NFT marketplace protocol built on the Aztec Network. It enables private NFT ownership, hidden reserve prices, blind auctions, cross-chain bridging, front-running resistance, and provably fair NFT-based games, all with ZK proofs.</strong>
+  <strong>A privacy-preserving NFT trading protocol built on the Aztec Network. With encrypted ownership, private cross-chain trade established L1/L2 collections.
+
+ all with ZK proofs.</strong>
 </p>
 
 ---
@@ -22,8 +24,8 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 2. **Hidden Reserve Prices and Blind Auctions**  
    Sellers can set hidden reserve prices, while buyers participate in sealed-bid auctions without revealing their bids on-chain until settlement.
 
-3. **Cross-Chain NFT Bridging**  
-   Existing NFTs from Ethereum or other chains can be locked and minted on Aztec for private trading, with trustless redemption back to the original chain.
+3. **Cross-Chain NFT Trading**  
+   Integrates with existing L1 NFT collections through a bridge system, enabling private trading of established NFTs.
 
 4. **Provably Fair NFT Games**  
    Verifiable randomness ensures fair raffles, lotteries, or mystery box reveals without exposing participant identities or sensitive state.
@@ -33,12 +35,9 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 
 ## Roadmap
 
-0. Private NFT Contracts (WIP)
+0. Create Private NFT Contracts (WIP)
 1. Creating Private Listings & Purchasing (WIP)
-2. Bidding in Blind/Sealed-Bid Auctions
-3. Finalizing Trades and Auctions
-4. Cross-Chain Redemption
-5. Gaming / Lottery Mechanics
+3. Cross-Chain Trading
 
 ## Getting Started
 
@@ -80,6 +79,8 @@ For questions, reach out in the [Issues](../../issues) or on our community Teleg
 - [Noir Docs](https://noir-lang.org/docs/)
 - [Awesome Aztec](https://github.com/AztecProtocol/awesome-aztec)
 - [Aztec Devrel Resources](https://github.com/AztecProtocol/dev-rel)
+- [Aztec Packages](https://github.com/AztecProtocol/aztec-packages)
+- [Aztec Standards by DeFi Wonderland](https://github.com/defi-wonderland/aztec-standards)
 
 ### Courses & Examples
 
