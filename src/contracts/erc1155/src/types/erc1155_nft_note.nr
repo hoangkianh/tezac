@@ -10,19 +10,15 @@ use dep::aztec::{
     },
 };
 
-// docs:start:nft_note
 #[partial_note(quote {token_id})]
-pub struct NFTNote {
-    // ID of the token
+pub struct ERC1155NFTNote {
     token_id: Field,
-    // The owner of the note
     owner: AztecAddress,
-    // Randomness of the note to hide its contents
+    amount: U128,
     randomness: Field,
 }
-// docs:end:nft_note
 
-impl NullifiableNote for NFTNote {
+impl NullifiableNote for ERC1155NFTNote {
     // docs:start:compute_nullifier
     fn compute_nullifier(
         self,
@@ -49,20 +45,21 @@ impl NullifiableNote for NFTNote {
     }
 }
 
-impl NFTNote {
-    pub fn new(token_id: Field, owner: AztecAddress) -> Self {
+impl ERC1155NFTNote {
+    pub fn new(token_id: Field, owner: AztecAddress, amount: U128) -> Self {
         /// Safety: We use the randomness to preserve the privacy of the note recipient by preventing brute-forcing,
         /// so a malicious sender could use non-random values to make the note less private. But they already know
         /// the full note pre-image anyway, and so the recipient already trusts them to not disclose this
         /// information. We can therefore assume that the sender will cooperate in the random value generation.
         let randomness = unsafe { random() };
-        NFTNote { token_id, owner, randomness, header: NoteHeader::empty() }
+        ERC1155NFTNote { token_id, owner, amount, randomness, header: NoteHeader::empty() }
     }
 }
 
-impl Eq for NFTNote {
+impl Eq for ERC1155NFTNote {
     fn eq(self, other: Self) -> bool {
         (self.token_id == other.token_id)
+            & (self.amount == other.amount)
             & (self.owner == other.owner)
             & (self.randomness == other.randomness)
     }

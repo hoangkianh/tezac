@@ -1,1 +1,1 @@
-mod nft_note;
+mod erc1155_nft_note;

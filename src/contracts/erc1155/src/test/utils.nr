@@ -1,4 +1,4 @@
-use crate::{NFT, types::nft_note::NFTNote};
+use crate::{NFT, types::erc1155_nft_note::ERC1155NFTNote};
 use dep::aztec::{
     oracle::{
         execution::{get_block_number, get_contract_address},
