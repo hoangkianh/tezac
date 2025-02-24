@@ -18,8 +18,8 @@ pub unconstrained fn setup(with_account_contracts: bool) -> (&mut TestEnvironmen
         let recipient = env.create_account_contract(2);
         (owner, recipient)
     } else {
-        let owner = env.create_account();
-        let recipient = env.create_account();
+        let owner = env.create_account(1);
+        let recipient = env.create_account(2);
         (owner, recipient)
     };
 
@@ -46,19 +46,6 @@ pub unconstrained fn setup_and_mint(
     let minted_token_id = 615;
 
     NFT::at(nft_contract_address).mint(owner, minted_token_id).call(&mut env.public());
-    env.advance_block_by(1);
-
-    (env, nft_contract_address, owner, recipient, minted_token_id)
-}
-
-pub unconstrained fn setup_and_private_mint(
-    with_account_contracts: bool,
-) -> (&mut TestEnvironment, AztecAddress, AztecAddress, AztecAddress, Field) {
-    // Setup
-    let (env, nft_contract_address, owner, recipient) = setup(with_account_contracts);
-
-    let minted_token_id = 615;
-    NFT::at(nft_contract_address).private_mint(owner, minted_token_id).call(&mut env.private());
     env.advance_block_by(1);
 
     (env, nft_contract_address, owner, recipient, minted_token_id)
