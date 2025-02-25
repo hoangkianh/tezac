@@ -1,5 +1,5 @@
 mod types;
-// mod test;
+mod test;
 
 use dep::aztec::macros::aztec;
 
