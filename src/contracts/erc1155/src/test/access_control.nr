@@ -1,4 +1,4 @@
-use crate::NFT;
+use crate::ERC1155NFT as NFT;
 use crate::test::utils;
 
 #[test]

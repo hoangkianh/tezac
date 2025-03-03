@@ -1,4 +1,4 @@
-use crate::NFT;
+use crate::ERC1155NFT as NFT;
 use crate::test::utils;
 
 #[test]
@@ -11,7 +11,7 @@ unconstrained fn mint_success() {
 
     env.advance_block_by(1);
 
-    utils::assert_nft_balance(env, nft_contract_address, owner, token_id, amount);
+    utils::assert_nft_balance(env, nft_contract_address, owner, token_id, 10);
 }
 
 #[test]

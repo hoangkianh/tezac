@@ -1,4 +1,4 @@
-use crate::{NFT, types::erc1155_nft_note::ERC1155NFTNote};
+use crate::ERC1155NFT as NFT;
 use dep::aztec::{
     oracle::{
         execution::{get_block_number, get_contract_address},
@@ -40,21 +40,23 @@ pub unconstrained fn setup(with_account_contracts: bool) -> (&mut TestEnvironmen
 
 pub unconstrained fn setup_and_mint(
     with_account_contracts: bool,
-) -> (&mut TestEnvironment, AztecAddress, AztecAddress, AztecAddress, Field) {
+) -> (&mut TestEnvironment, AztecAddress, AztecAddress, AztecAddress, Field, U128) {
     // Setup
     let (env, nft_contract_address, owner, recipient) = setup(with_account_contracts);
     let minted_token_id = 615;
+    let amount = U128::from_integer(10);
 
-    NFT::at(nft_contract_address).mint(owner, minted_token_id, U128::from_integer(10)).call(&mut env.public());
+    NFT::at(nft_contract_address).mint(owner, minted_token_id, amount).call(&mut env.public());
     env.advance_block_by(1);
 
-    (env, nft_contract_address, owner, recipient, minted_token_id)
+    (env, nft_contract_address, owner, recipient, minted_token_id, amount)
 }
 
 pub unconstrained fn setup_mint_and_transfer_to_private(
     with_account_contracts: bool,
+    private_amount: Field
 ) -> (&mut TestEnvironment, AztecAddress, AztecAddress, AztecAddress, Field) {
-    let (env, nft_contract_address, owner, recipient, minted_token_id) =
+    let (env, nft_contract_address, owner, recipient, minted_token_id, amount) =
         setup_and_mint(with_account_contracts);
 
     let note_randomness = random();
@@ -63,7 +65,7 @@ pub unconstrained fn setup_mint_and_transfer_to_private(
     let _ = OracleMock::mock("getRandomField").returns(note_randomness);
 
     // Transfer the public NFT to private.
-    NFT::at(nft_contract_address).transfer_to_private(owner, minted_token_id, U128::from_integer(10)).call(
+    NFT::at(nft_contract_address).transfer_to_private(owner, minted_token_id, U128::from_integer(private_amount)).call(
         &mut env.private(),
     );
 
@@ -85,38 +87,42 @@ pub unconstrained fn get_nft_total_supply(nft_contract_address: AztecAddress, to
     total_supply
 }
 
+pub unconstrained fn get_private_nft_balance(
+    nft_contract_address: AztecAddress,
+    owner: AztecAddress,
+    token_id: Field
+) -> U128 {
+    let current_contract_address = get_contract_address();
+    cheatcodes::set_contract_address(nft_contract_address);
+
+    let obtained_balance = NFT::get_private_balance_of(owner, token_id);
+    obtained_balance
+}
+
 pub unconstrained fn assert_nft_balance(
     env: &mut TestEnvironment,
     nft_contract_address: AztecAddress,
     owner: AztecAddress,
     token_id: Field,
-    balance: U128,
+    balance: Field,
 ) {
     let obtained_balance = NFT::at(nft_contract_address).balance_of(owner, token_id).view(&mut env.public());
 
-    assert(balance == obtained_balance, "Incorrect NFT balance");
+    assert(U128::from_integer(balance) == obtained_balance, "Incorrect NFT balance");
 }
 
 pub unconstrained fn assert_private_nft_balance(
     nft_contract_address: AztecAddress,
     owner: AztecAddress,
     token_id: Field,
-    balance: U128,
+    balance: Field,
 ) {
     let current_contract_address = get_contract_address();
     cheatcodes::set_contract_address(nft_contract_address);
 
-    // Direct call to unconstrained
-    let (private_nfts, _) = NFT::get_private_nfts(owner, 0);
-
-    let mut nft_found = false;
-    for obtained_nft in private_nfts {
-        if (obtained_nft.token_id == token_id) & (obtained_nft.amount == balance) {
-            nft_found = true;
-        }
-    }
+    let obtained_balance = NFT::get_private_balance_of(owner, token_id);
 
     cheatcodes::set_contract_address(current_contract_address);
 
-    assert(nft_found, "Incorrect private NFT balance");
+    assert(U128::from_integer(balance) == obtained_balance, "Incorrect private NFT balance");
 }
