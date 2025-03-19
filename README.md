@@ -1,5 +1,5 @@
 <p align="center">
- <img width="400" alt="logo" src="https://github.com/user-attachments/assets/d0121030-47ee-4a88-a3b5-d40d861d22fc" />
+ <img width="240" alt="twitter-avatar" src="https://github.com/user-attachments/assets/bccdb666-d196-4848-90af-d7f72b589d2f" />
 </p>
 
 <h1 align="center">Tezac NFT Trading Protocol</h1>
