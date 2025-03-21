@@ -41,8 +41,12 @@ Tezac leverages Aztec’s zkRollup architecture to encrypt NFT ownership data an
 
 ### Prerequisites
 
-- **Node > v18**
 - **Docker**
+- **Node.js >= v18.xx.x and <= v20.17.x (lts/iron)**
+- **Yarn: 4.5.2**
+- **Aztec Sandbox: 0.81.0**
+- **Nargo: 1.0.0-beta.3**
+- **Noirc: 1.0.0-beta.3+0000000000000000000000000000000000000000**
 
 ### Usage
 
