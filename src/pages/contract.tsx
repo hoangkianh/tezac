@@ -14,7 +14,7 @@ export function ContractComponent({ contract }: { contract: Contract }) {
         <label htmlFor="viewFunctions">View Functions:</label>
         <select name="viewFunctions" id="viewFunctions">
           {filteredInterface.map(
-            (fn, index) =>
+            (fn: { functionType: string; name: string }, index: number) =>
               fn.functionType === 'unconstrained' && (
                 <option key={index} value={index}>
                   {fn.name}
@@ -31,7 +31,7 @@ export function ContractComponent({ contract }: { contract: Contract }) {
         <label htmlFor="functions">Functions:</label>
         <select name="functions" id="functions" onChange={() => setShowInput(true)}>
           {filteredInterface.map(
-            (fn, index) =>
+            (fn: { functionType: string; name: string }, index: number) =>
               fn.functionType !== 'unconstrained' && (
                 <option key={index} value={index}>
                   {fn.name}
