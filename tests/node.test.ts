@@ -1,5 +1,5 @@
 import { AccountWallet, CompleteAddress, Contract, Fr, createLogger } from '@aztec/aztec.js';
-import { BoxReactContract } from '../artifacts/BoxReact.js';
+import { NFTContract } from '../artifacts/NFT';
 import { deployerEnv } from '../src/config.js';
 
 const logger = createLogger('aztec:http-pxe-client');
@@ -15,9 +15,11 @@ describe('BoxReact Contract Tests', () => {
     accountCompleteAddress = wallet.getCompleteAddress();
     const salt = Fr.random();
 
-    contract = await BoxReactContract.deploy(
+    contract = await NFTContract.deploy(
       wallet,
-      Fr.random(),
+      accountCompleteAddress.address,
+      "NFT Collection",
+      "NFT",
       accountCompleteAddress.address
     )
       .send({ contractAddressSalt: salt })

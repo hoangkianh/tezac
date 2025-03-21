@@ -10,7 +10,7 @@
     "codegen": "cd src/contracts/ && ${AZTEC_BUILDER:-aztec-builder} codegen ./target -o ../../artifacts",
     "clean": "rm -rf ./dist .tsbuildinfo ./artifacts ./src/contracts/target",
     "prep": "yarn clean && yarn compile && yarn codegen",
-    "dev": "yarn prep && webpack serve --mode development",
+    "dev": "webpack serve --mode development",
     "build": "yarn prep && webpack",
     "serve": "webpack serve --no-open --mode development",
     "formatting": "prettier --check ./src && eslint ./src",
@@ -49,6 +49,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@aztec/types": "^0.76.4",
     "@playwright/test": "1.49.0",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.5.9",
