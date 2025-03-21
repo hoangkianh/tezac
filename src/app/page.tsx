@@ -1,7 +1,7 @@
 'use client';
 
 import AppLayout from './components/AppLayout';
-import ReadmeContent from '../src/pages/README';
+import READMEContent from '../pages/README';
 import Script from 'next/script';
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
                 `}
             </Script>
             <AppLayout>
-                <ReadmeContent />
+                <READMEContent />
             </AppLayout>
         </>
     );

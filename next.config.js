@@ -13,6 +13,8 @@ const nextConfig = {
       },
     ],
   },
+  // Set the app directory to be in src
+  distDir: 'dist',
   webpack: (config) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
