@@ -8,7 +8,7 @@ const SECRET_KEY = Fr.random();
 export class PrivateEnv {
   pxe;
   accountContract;
-  account: AccountManager;
+  account;
 
   constructor(
     private secretKey: Fr,
@@ -17,6 +17,8 @@ export class PrivateEnv {
     this.pxe = createPXEClient(this.pxeURL);
     const encryptionPrivateKey = deriveMasterIncomingViewingSecretKey(secretKey);
     this.accountContract = new SingleKeyAccountContract(encryptionPrivateKey);
+
+    // @ts-ignore - The AccountManager constructor is private but we need to use it anyway
     this.account = new AccountManager(this.pxe, this.secretKey, this.accountContract);
   }
 

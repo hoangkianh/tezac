@@ -18,7 +18,9 @@ export function useContract() {
 
     const tx = await NFTContract.deploy(
       wallet,
-      Fr.random(),
+      wallet.getCompleteAddress().address,
+      "NFT Collection",
+      "NFT",
       wallet.getCompleteAddress().address,
     ).send({
       contractAddressSalt: salt,
