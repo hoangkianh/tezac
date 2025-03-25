@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { deployerEnv } from '../config';
 
 import { Contract, Fr } from '@aztec/aztec.js';
-import { BoxReactContract } from '../../artifacts/BoxReact';
+import { NFTContract } from '../../artifacts/NFT';
 import { toast } from 'react-toastify';
 
 export function useContract() {
@@ -16,9 +16,11 @@ export function useContract() {
     const wallet = await deployerEnv.getWallet();
     const salt = Fr.random();
 
-    const tx = await BoxReactContract.deploy(
+    const tx = await NFTContract.deploy(
       wallet,
-      Fr.random(),
+      wallet.getCompleteAddress().address,
+      "NFT Collection",
+      "NFT",
       wallet.getCompleteAddress().address,
     ).send({
       contractAddressSalt: salt,
@@ -26,12 +28,12 @@ export function useContract() {
     const contract = await toast.promise(tx.deployed(), {
       pending: 'Deploying contract...',
       success: {
-        render: ({ data }) => `Address: ${data.address}`,
+        render: ({ data }: { data: any }) => `Address: ${data.address}`,
       },
       error: 'Error deploying contract',
     });
 
-    setContract(contract);
+    setContract(contract as Contract);
     setWait(false);
   };
 
